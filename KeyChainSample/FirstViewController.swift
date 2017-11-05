@@ -12,6 +12,7 @@ import KeychainAccess
 class FirstViewController: UIViewController {
 
     @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var outputLabel: UILabel!
 
     private let keyChainKey = "sample"
 
@@ -26,7 +27,7 @@ class FirstViewController: UIViewController {
     }
 
     //MARKS: Actions
-    @IBAction func saveAction(_ sender: Any) {
+    @IBAction func saveAction(_ sender: UIButton) {
         print("[SAVE START]")
 
         guard let inputText = self.inputTextField.text else {
@@ -41,7 +42,7 @@ class FirstViewController: UIViewController {
         print("[SAVE END]")
     }
 
-    @IBAction func readAction(_ sender: Any) {
+    @IBAction func readAction(_ sender: UIButton) {
         print("[READ END]")
 
         let keychain = Keychain(service: "com.example.KeyChainSample")
@@ -53,7 +54,7 @@ class FirstViewController: UIViewController {
         }
         print("[SAVE VALUE] : " + saveValues!)
 
-        self.inputTextField.text = saveValues
+        self.outputLabel.text = saveValues
 
         print("[READ END]")
     }
